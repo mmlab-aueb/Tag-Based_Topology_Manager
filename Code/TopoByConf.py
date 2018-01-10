@@ -21,14 +21,14 @@ class TopoByConf( Topo ):
         for h in data['hosts']:
             h = self.addHost(str(h), ip = data['hosts'][h]['ip'], mac = data['hosts'][h]['mac'])
         info('*** Adding Switches\n')
-        for s in data['switches']['names']:
+        for s in data['switches']:
             s = self.addSwitch(str(s))
         info('Adding Links\n')
 
         # Add links
-        for k, v in data['link'].items():
+        for l in data['link']:
 
-            k = self.addLink(v[0],v[1])
+            l = self.addLink(data['link'][l]['connection'][0],data['link'][l]['connection'][1], data['link'][l]['ports'][0],data['link'][l]['ports'][1])
 
 
 
